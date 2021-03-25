@@ -92,13 +92,22 @@ function App() {
 
     const [ CONTA_VALOR, setCONTA_VALOR ] = useState('');
     const [ CONTA_GORJETA, setCONTA_GORJETA ] = useState('5');
+    const [ CONTA_PESSOAS, setCONTA_PESSOAS ] = useState('1');
 
-    const handleCONTA_VALOR = (e) => {
+    const LIVE_CONTA_VALOR = (e) => {
         setCONTA_VALOR(e.target.value);
     }
 
-    const handleCONTA_GORJETA = (e) => {
+    const LIVE_CONTA_GORJETA = (e) => {
         setCONTA_GORJETA(e.target.value);
+    }
+
+    const LIVE_CONTA_PESSOAS = (e) => {
+        setCONTA_PESSOAS(e.target.value);
+    }
+
+    function VALOR_POR_PESSOA(total, pessoas) {
+        return (total / pessoas)
     }
 
     function CONTA_TOTAL(valor1, valor2) {
@@ -116,11 +125,15 @@ function App() {
                 <DivValores>
                     <DivTitleInputs>
                         <TituloFunção>Conta:</TituloFunção>
-                        <Input placeholder="100,00" onChange={handleCONTA_VALOR}/>
+                        <Input placeholder="100,00" onChange={LIVE_CONTA_VALOR}/>
                     </DivTitleInputs>
                     <DivTitleInputs>
                         <TituloFunção>Gorjeta (%):</TituloFunção>
-                        <Input value={CONTA_GORJETA} placeholder="5%" onChange={handleCONTA_GORJETA} />
+                        <Input value={CONTA_GORJETA} placeholder="5%" onChange={LIVE_CONTA_GORJETA} />
+                    </DivTitleInputs>
+                    <DivTitleInputs>
+                        <TituloFunção>Pessoas na mesa:</TituloFunção>
+                        <Input value={CONTA_PESSOAS} placeholder="1" onChange={LIVE_CONTA_PESSOAS} />
                     </DivTitleInputs>
                 </DivValores>
 
@@ -135,6 +148,10 @@ function App() {
                         <CustomTitle fontsize="16px" color="#843c96">Gorjeta:</CustomTitle>
                             <CustomResult backgroundcolor="#2abf92" bordercolor="#2abf92">{CONTA_GORJETA} %</CustomResult> 
                             <CustomResult backgroundcolor="#3ebf2a" bordercolor="#3ebf2a">{CONTA_GORJETA_VALOR} R$</CustomResult>
+                        <br />
+                        <br />
+                        <CustomTitle fontsize="16px" color="#ffbf00">Valor por pessoa:</CustomTitle>
+                            <CustomResult backgroundcolor="#3ebf2a" bordercolor="#3ebf2a">{VALOR_POR_PESSOA(CONTA_TOTAL(CONTA_VALOR, CONTA_GORJETA_VALOR), CONTA_PESSOAS)} R$</CustomResult>
                         <br />
                         <br />
                         <CustomTitle fontsize="18px" color="#333333">Total:</CustomTitle>
