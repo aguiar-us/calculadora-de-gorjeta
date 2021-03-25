@@ -1,5 +1,5 @@
 # Calculadora de Gorjeta (B7Web)
-Calculadora de gorjetas desenvolvida através do curso da B7Web sob o auxílio de Bonieky Lacerda.
+Calculadora de gorjetas desenvolvida em NodeJS.
 
 # Preview:
 <img src="https://media.discordapp.net/attachments/773453472158842900/824550644106264586/unknown.png" />
